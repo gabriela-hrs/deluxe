@@ -1,0 +1,527 @@
+/* font-family: 'Jacques Francois', serif;
+font-family: 'Montserrat', sans-serif;
+font-family: 'Newsreader', serif; */
+
+// GLOBAL STYLES
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+}
+
+.btn {
+  width: 16rem;
+  height: 4rem;
+  color: black;
+  font-size: 1.2rem;
+  border: none;
+  background-color: hsl(32, 27%, 44%, 0.95);
+  font-family: 'Jacques Francois', serif;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.btn:hover {
+  transform: scale(0.8);
+}
+
+.title {
+  font-size: 2.4rem;
+  font-family: 'Jacques Francois', serif;
+}
+
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 95%;
+  margin: 0 auto;
+}
+
+.title-line {
+  height: 0.3rem;
+  width: 30%;
+  background-color: #8F7352;
+}
+
+.paragraph-size {
+  font-size: 1.2rem;
+}
+
+// END OF GLOBAL STYLES
+
+// Login and Register start
+.account-form-container {
+  background-image: url(../public/images/navbar-background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  display: flex;
+  height: 100lvh;
+  align-items: center;
+
+  > * {
+    z-index: 1;
+  }
+
+  .account-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    background-color: black;
+    box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    border-radius: 3rem;
+    padding: 4rem;
+    width: 50%;
+    height: fit-content;
+    margin: auto;
+
+    .title {
+      color: #8F7352;
+      margin-bottom: 2rem;
+    }
+
+    p, .account-link {
+      color: #8F7352;
+      font-size: 1.2rem;
+      font-family: 'Jacques Francois', serif;
+    }
+
+    p {
+      margin-top: 2rem;
+    }
+
+    .account-link {
+      text-decoration: none;
+      font-weight: bold;
+
+      :hover {
+        text-decoration: underline;
+      }
+    }
+
+    label, input {
+      color: #8F7352;
+      font-size: 1.2rem;
+      font-family: 'Jacques Francois', serif;
+    }
+
+    input {
+      padding: 1rem;
+      border: none;
+      border-bottom: 0.1rem solid #8F7352;
+      font-family: 'Jacques Francois', serif;
+      background-color: black;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+.account-form-container::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: black;
+  opacity: .25;
+}
+// Login and Register end
+
+//Navbar start
+.navbar {
+  background-color: black;
+
+  .navbar-top {
+      background-image: url(../public/images/navbar-background.png);
+      background-position: center;
+      background-size: cover;
+      background-repeat: no-repeat;
+      box-shadow: inset 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+      padding: 1rem;
+      text-shadow: 0.1rem 0.1rem 0.2rem rgba(0, 0, 0, 0.75);
+
+      .title-link {
+        text-align: center;
+        color: #8F7352;
+        text-decoration: none;
+        font-family: 'Montserrat', sans-serif;
+      }
+
+      .salon-name {
+        display: inline-block;
+        font-family: 'Newsreader', serif;
+        font-size: 4.8rem;
+        margin-top: 0.5rem;
+      }
+  }
+
+  /* STYLING THE CONTAINER */
+
+  .navbar-container {
+      display: flex;
+      justify-content: center;
+      width: 85%;
+      margin: auto;
+
+      .nav-row {
+          width: 100%;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .profile-btn {
+            width: 2.4rem;
+            height: 2.4rem;
+            overflow: hidden;
+            background-image: url(../public/images/user.png);
+            background-position: center;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-color: black;
+            border: none;
+            cursor: pointer;
+            transition: all 1s;
+
+            :hover {
+              transform: scale(0.8);
+            }
+          }
+      }
+
+      /* STYLING THE LINKS */
+
+      .nav-menu {
+        display: flex;
+        justify-content: center;
+        flex-grow: 1;
+
+        .nav-item {
+          font-size: 1.2rem;
+          list-style: none;
+          font-family: 'Jacques Francois', serif;
+        }
+
+        .nav-link {
+          color: #8F7352;
+          padding: 1rem 2rem;
+          text-decoration: none;
+        }
+
+        :hover {
+          background-color: #8F7352;
+          color: black;
+        }
+      }
+    }
+  }
+
+//Navbar end
+
+//UserProfile start
+.profile-section {
+  background-color: black;
+}
+
+.profile-container {
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 4rem;
+  padding: 8rem;
+}
+
+.profile-container h4, .profile-container p {
+  color: #8F7352;
+  font-family: 'Jacques Francois', serif;
+}
+
+.profile-container p {
+  font-size: 1.2rem;
+}
+
+.user-btns {
+  display: flex;
+  gap: 4rem;
+}
+// UserProfile end
+
+//EditProfile start
+
+//EditProfile end
+
+//ScrollButton start
+.scroll-btn {
+  position: fixed;
+  right: 2rem;
+  bottom: 10%;
+  width: 4rem;
+  height: 4rem;
+}
+//ScrollButton end
+
+//Home start
+.hero-section {
+  background-image: url(../public/images/hero-background.png);
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  box-shadow: inset 0 60rem 4rem rgba(0, 0, 0, 0.25);
+
+  .container {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 8rem 0;
+
+    .hero-btn {
+      width: 12rem;
+      height: 12rem;
+    }
+
+    .appointment-btn {
+      margin-bottom: 4rem;
+    }
+  }
+}
+
+
+.services-section {
+  padding-bottom: 8rem;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(1, auto);
+  grid-template-rows: repeat(6, auto);
+  background-color: black;
+
+  .service {
+    width: 100%;
+    display: flex;
+
+    .service-img {
+      width: 50%;
+      aspect-ratio: 1/1;
+
+      img {
+        width: 100%;
+        aspect-ratio: 1/1;
+        object-fit: cover;
+      }
+    }
+
+    .service-info {
+      width: 50%;
+      background-color: black;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-around;
+      align-items: center;
+
+      > * {
+        color: #8F7352;
+      }
+
+      .service-description {
+        width: 65%;
+        font-size: 1.2rem;
+        font-family: 'Jacques Francois', serif;
+      }
+    }
+  }
+}
+
+/* STYLING THE ABOUT SECTION */
+
+.about-section {
+  padding-bottom: 8rem;
+  background-color: black;
+
+  .about-container {
+    width: 85%;
+    margin: 4rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  > * {
+    color: #8F7352;
+    font-family: 'Jacques Francois', serif;
+  }
+
+  > * {
+    text-decoration: none;
+  }
+
+}
+//Home end
+
+//Contacts start
+.contacts-page {
+  padding-top: 4rem;
+  padding-bottom: 8rem;
+  background-color: black;
+
+  h4 {
+    margin-bottom: 2rem;
+  }
+
+  p {
+    margin-bottom: 1rem;
+    text-indent: 2rem;
+  }
+
+  .contacts-page-container {
+    width: 85%;
+    margin: 4rem auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  > * {
+    color: #8F7352;
+    font-family: 'Jacques Francois', serif;
+    font-size: 1.2rem;
+  }
+
+  .contacts-page-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    .addresses, .phone-numbers, .emails {
+      margin-bottom: 3rem;
+    }
+
+    .location-map-container {
+      width: 36rem;
+      height: 36rem;
+
+      .location-map {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+}
+
+.contacts-form {
+  padding-top: 4rem;
+  padding-bottom: 0.1rem;
+  background-color: #8F7352;
+}
+
+.contacts-page > * {
+  font-family: 'Jacques Francois', serif;
+  font-size: 1.2rem;
+}
+
+.email-form {
+  width: 85%;
+  margin: 4rem auto;
+  background-color: black;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  padding: 4rem;
+  border-radius: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.form-title-line {
+  height: 0.3rem;
+  width: 30%;
+  background-color: black;
+}
+
+.email-form label, .email-form input, .email-form textarea {
+  color: #8F7352;
+  font-size: 1.2rem;
+  font-family: 'Jacques Francois', serif;
+}
+
+.email-form label, .account-form label {
+  margin-bottom: 2rem;
+}
+
+.email-form input, .email-form textarea {
+  padding: 1rem;
+  border: none;
+  border-bottom: 0.1rem solid #8F7352;
+  font-family: 'Jacques Francois', serif;
+  background-color: black;
+  margin-bottom: 4rem;
+}
+//Contacts end
+
+//Footer start
+.footer {
+  background-color: #8F7352;
+  padding: 8rem 0;
+
+  .footer-container {
+    width: 85%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .footer-about {
+      width: 30%;
+
+      .footer-salon-name {
+        font-size: 3.6rem;
+        margin-bottom: 4rem;
+      }
+    }
+
+    .footer-nav, .footer-services, .footer-contacts {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+
+      .footer-title {
+        font-size: 1.2rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-link {
+        font-size: 1.2rem;
+        color: black;
+        text-decoration: none;
+      }
+
+      .footer-link:hover {
+        text-decoration: underline;
+      }
+
+      .footer-link-first {
+        margin-bottom: 1rem;
+      }
+
+      .footer-p, .footer-services a {
+        font-size: 1.2rem;
+      }
+    }
+  }
+}
+//Footer end
