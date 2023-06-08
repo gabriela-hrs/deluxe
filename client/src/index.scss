@@ -257,7 +257,19 @@ html {
 // UserProfile end
 
 //EditProfile start
-
+.change-username-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  background-color: black;
+  box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+  border-radius: 3rem;
+  padding: 4rem;
+  width: 50%;
+  height: fit-content;
+  margin: auto;
+}
 //EditProfile end
 
 //ScrollButton start
@@ -435,7 +447,7 @@ html {
   font-size: 1.2rem;
 }
 
-.email-form {
+.reservations-form {
   width: 85%;
   margin: 4rem auto;
   background-color: black;
@@ -445,6 +457,25 @@ html {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+
+  label, input, select {
+    color: #8F7352;
+    font-size: 1.2rem;
+    font-family: 'Jacques Francois', serif;
+  }
+
+  label {
+    margin-bottom: 2rem;
+  }
+
+  input, select {
+    padding: 1rem;
+    border: none;
+    border-bottom: 0.1rem solid #8F7352;
+    font-family: 'Jacques Francois', serif;
+    background-color: black;
+    margin-bottom: 4rem;
+  }
 }
 
 .form-title-line {
@@ -452,25 +483,15 @@ html {
   width: 30%;
   background-color: black;
 }
-
-.email-form label, .email-form input, .email-form textarea {
-  color: #8F7352;
-  font-size: 1.2rem;
-  font-family: 'Jacques Francois', serif;
-}
-
-.email-form label, .account-form label {
+.account-form label {
   margin-bottom: 2rem;
 }
 
-.email-form input, .email-form textarea {
-  padding: 1rem;
-  border: none;
-  border-bottom: 0.1rem solid #8F7352;
-  font-family: 'Jacques Francois', serif;
-  background-color: black;
-  margin-bottom: 4rem;
+.reservations-form input::placeholder {
+  color: #8F7352;
+  opacity: 1;
 }
+
 //Contacts end
 
 //Footer start

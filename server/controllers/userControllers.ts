@@ -2,7 +2,7 @@ import { NextFunction, Request, Response } from "express"
 import { DB } from "../core/DB"
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-// require('dotenv').config()
+require('dotenv').config()
 
 const db = new DB()
 const salt = 10
@@ -12,7 +12,7 @@ export const verifyUser = (req: any, res: Response, next: NextFunction) => {
     if(!token) {
         return res.json({Error: "You are unauthenticated..."})
     } else {
-        jwt.verify(token, 'jwt_secret_key', (error: any, decoded: any) => {
+        jwt.verify(token, process.env.JWT_SECRET_KEY, (error: any, decoded: any) => {
             if(error) {
                 return res.json({Error: "Error in verifying the token..."})
             } else {
@@ -51,7 +51,7 @@ export const loginUser = (req: Request, res: Response) => {
                 if(error) return res.json({Error: "Password hashes mismatch..."})
                 if(response) {
                     const username = data[0].username
-                    const token = jwt.sign({username}, "jwt_secret_key", {expiresIn: '1d'})
+                    const token = jwt.sign({username}, process.env.JWT_SECRET_KEY, {expiresIn: '1d'})
                     res.cookie('token', token)
                     return res.json({Status: "Successfully logged in user!"})
                 } else {

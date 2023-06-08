@@ -6,10 +6,10 @@ export class DB {
 
     constructor() {
         this.conn = mysql.createPool({
-            host: 'localhost',
-            user: 'root',
-            password: '',
-            database: 'deluxebeauty'
+            host: process.env.HOST,
+            user: process.env.USER,
+            password: process.env.PASSWORD,
+            database: process.env.DATABASE
         })
     }
 }

@@ -41,8 +41,8 @@ export default function EditProfile() {
             <Navbar />
 
             {/* CONTACTS SECTION */}
-            <section className="edit-profile-section">
-                <form className="account-form" onSubmit={handleSubmit}>
+            <section className="section container">
+                <form className="change-username-form" onSubmit={handleSubmit}>
                     <h2 className="title">EDIT USERNAME</h2>
                     <label htmlFor='userName'>NEW USERNAME:</label>
                     <input required type='text' id='userName' name='userName' onChange={e => setuserInfo({...userInfo, username: e.target.value})} />

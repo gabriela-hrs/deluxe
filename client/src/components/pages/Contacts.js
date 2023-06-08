@@ -1,10 +1,32 @@
 import '../../index.scss';
-import React from 'react';
+import React, {useState} from 'react';
 import Navbar from "../../components/Navbar";
 import Footer from '../Footer';
+import axios from "axios";
+import {useNavigate} from "react-router-dom";
 
 export default function Contacts() {
-  return (
+
+    const [reservationInfo, setReservationInfo] = useState({
+        username: '',
+        date: '',
+        hour: '',
+        service:''
+    })
+
+    const navigate = useNavigate()
+    const handleSubmit = (event) => {
+        axios.post('http://localhost:3001/scheduleAppointment', reservationInfo)
+            .then(res => {
+                if(res.data.Status === "Successfully scheduled appointment!") {
+                    navigate('/contacts')
+                } else {
+                    alert("Couldn't schedule appointment!...")
+                }
+            })
+            .then(error => console.log(error))
+    }
+    return (
     <>
         <Navbar />
 
@@ -46,14 +68,24 @@ export default function Contacts() {
               <h3 className='title'>SEND US AN EMAIL</h3>
               <div className="form-title-line">&nbsp;</div>
           </div>
-          <form action="POST" className="email-form">
-            <label htmlFor="messageName">NAME:</label>
-            <input required type="text" id='messageName' name='messageName' placeholder='Type here...' />
-            <label htmlFor="messageEmail">EMAIL:</label>
-            <input required type="email" id='messageEmail' name='messageEmail' placeholder='Type here...' />
-            <label htmlFor="messageDetails">MESSAGE:</label>
-            <textarea name="messageDetails" id="messageDetails" cols="30" rows="10" placeholder='Type here...'></textarea>
-            <button type='button' className="btn">SEND NOW</button>
+          <form className="reservations-form" onSubmit={handleSubmit}>
+                <label htmlFor="messageName">USERNAME:</label>
+                <input required type="text" id='messageName' name='messageName' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, username: e.target.value})}  />
+                <label htmlFor="messageDate">DATE:</label>
+                <input required type="date" id='messageDate' name='messageDate' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, date: e.target.value})} />
+                <label htmlFor="messageHour">HOUR:</label>
+                <input required type="time" id='messageHour' name='messageHour' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, hour: e.target.value})} />
+                <label htmlFor="messageServices">SERVICE:</label>
+                <select id="messageServices" name="messageServices" onChange={e => setReservationInfo({...reservationInfo, service: e.target.value})} >
+                    <option value="empty">SELECT SERVICE</option>
+                    <option value="aroma-therapy">AROMA THERAPY</option>
+                    <option value="hair-styling">HAIR STYLING</option>
+                    <option value="manicure">MANICURE</option>
+                    <option value="massage">MASSAGE</option>
+                    <option value="hair-removal">HAIR REMOVAL</option>
+                    <option value="eyelash-extensions">EYELASH EXTENSIONS</option>
+                </select>
+            <button type='submit' className="btn">SCHEDULE NOW</button>
           </form>
         </section>
 

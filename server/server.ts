@@ -3,17 +3,19 @@ const cors = require('cors')
 const cookieParser = require('cookie-parser')
 import { json } from 'express'
 import { userRouter } from './routers/userRouter'
+import {userReservations} from "./routers/userReservations";
 require('dotenv').config()
 
 const app = express()
 app.use(json())
 app.use(cookieParser())
 app.use(cors({
-    origin: ['http://localhost:3000'],
+    origin: [process.env.FRONT_END_ORIGIN],
     credentials: true
 }))
 app.use(userRouter)
+app.use(userReservations)
 
-app.listen(3001, () => {
+app.listen(process.env.BACK_END_PORT, () => {
     console.log(`Listening...`)
 });
