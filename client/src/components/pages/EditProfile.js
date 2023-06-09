@@ -6,6 +6,7 @@ import Navbar from "../../components/Navbar";
 import Footer from '../Footer';
 
 export default function EditProfile() {
+    axios.defaults.withCredentials = true
     const [userInfo, setuserInfo] = useState({
         username: ''
     })
@@ -35,17 +36,21 @@ export default function EditProfile() {
         .then(error => console.log(error))
     }
 
-
     return (
         <>
             <Navbar />
 
             {/* CONTACTS SECTION */}
-            <section className="section container">
-                <form className="change-username-form" onSubmit={handleSubmit}>
-                    <h2 className="title">EDIT USERNAME</h2>
+            <section className="contacts-form">
+                <div className="section-title">
+                    <div className="form-title-line">&nbsp;</div>
+                    <h3 className="title">EDIT USERNAME</h3>
+                    <div className="form-title-line">&nbsp;</div>
+                </div>
+                <form className="reservations-form" onSubmit={handleSubmit}>
+                    <label htmlFor='userName'>CURRENT USERNAME: {username}</label>
                     <label htmlFor='userName'>NEW USERNAME:</label>
-                    <input required type='text' id='userName' name='userName' onChange={e => setuserInfo({...userInfo, username: e.target.value})} />
+                    <input required type='text' id='userName' name='userName' placeholder='Type here...' onChange={e => setuserInfo({...userInfo, username: e.target.value})} />
                     <button type='submit' className="btn">SAVE</button>
                 </form>
             </section>

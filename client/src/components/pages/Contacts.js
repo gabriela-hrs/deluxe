@@ -1,11 +1,25 @@
 import '../../index.scss';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Navbar from "../../components/Navbar";
 import Footer from '../Footer';
 import axios from "axios";
-import {useNavigate} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 export default function Contacts() {
+
+    const [auth, setAuth] = useState(false)
+    axios.defaults.withCredentials = true
+    useEffect(() => {
+        axios.get('http://localhost:3001')
+            .then(res => {
+                if(res.data.Status === "Success!") {
+                    setAuth(true)
+                } else {
+                    setAuth(false)
+                }
+            })
+            .then(error => console.log(error))
+    }, [])
 
     const [reservationInfo, setReservationInfo] = useState({
         username: '',
@@ -26,6 +40,7 @@ export default function Contacts() {
             })
             .then(error => console.log(error))
     }
+
     return (
     <>
         <Navbar />
@@ -65,28 +80,57 @@ export default function Contacts() {
         <section className="contacts-form">
           <div className="section-title">
               <div className="form-title-line">&nbsp;</div>
-              <h3 className='title'>SEND US AN EMAIL</h3>
+              <h3 className='title'>SCHEDULE AN APPOINTMENT</h3>
               <div className="form-title-line">&nbsp;</div>
           </div>
-          <form className="reservations-form" onSubmit={handleSubmit}>
-                <label htmlFor="messageName">USERNAME:</label>
-                <input required type="text" id='messageName' name='messageName' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, username: e.target.value})}  />
-                <label htmlFor="messageDate">DATE:</label>
-                <input required type="date" id='messageDate' name='messageDate' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, date: e.target.value})} />
-                <label htmlFor="messageHour">HOUR:</label>
-                <input required type="time" id='messageHour' name='messageHour' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, hour: e.target.value})} />
-                <label htmlFor="messageServices">SERVICE:</label>
-                <select id="messageServices" name="messageServices" onChange={e => setReservationInfo({...reservationInfo, service: e.target.value})} >
-                    <option value="empty">SELECT SERVICE</option>
-                    <option value="aroma-therapy">AROMA THERAPY</option>
-                    <option value="hair-styling">HAIR STYLING</option>
-                    <option value="manicure">MANICURE</option>
-                    <option value="massage">MASSAGE</option>
-                    <option value="hair-removal">HAIR REMOVAL</option>
-                    <option value="eyelash-extensions">EYELASH EXTENSIONS</option>
-                </select>
-            <button type='submit' className="btn">SCHEDULE NOW</button>
-          </form>
+            {
+                auth ?
+                <form className="reservations-form" onSubmit={handleSubmit}>
+                    <label htmlFor="messageName">USERNAME:</label>
+                    <input required type="text" id='messageName' name='messageName' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, username: e.target.value})}  />
+                    <label htmlFor="messageDate">DATE:</label>
+                    <input required type="date" id='messageDate' name='messageDate' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, date: e.target.value})} />
+                    <label htmlFor="messageHour">HOUR:</label>
+                    <input required type="time" id='messageHour' name='messageHour' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, hour: e.target.value})} />
+                    <label htmlFor="messageServices">SERVICE:</label>
+                    <select id="messageServices" name="messageServices" onChange={e => setReservationInfo({...reservationInfo, service: e.target.value})} >
+                        <option value="empty">SELECT SERVICE</option>
+                        <option value="aroma-therapy">AROMA THERAPY</option>
+                        <option value="hair-styling">HAIR STYLING</option>
+                        <option value="manicure">MANICURE</option>
+                        <option value="massage">MASSAGE</option>
+                        <option value="hair-removal">HAIR REMOVAL</option>
+                        <option value="eyelash-extensions">EYELASH EXTENSIONS</option>
+                    </select>
+                    <button type='submit' className="btn">SCHEDULE NOW</button>
+                </form>
+                :
+                <form className="reservations-form blur" onSubmit={handleSubmit}>
+                    <label htmlFor="messageName">USERNAME:</label>
+                    <input required type="text" id='messageName' name='messageName' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, username: e.target.value})}  />
+                    <label htmlFor="messageDate">DATE:</label>
+                    <input required type="date" id='messageDate' name='messageDate' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, date: e.target.value})} />
+                    <label htmlFor="messageHour">HOUR:</label>
+                    <input required type="time" id='messageHour' name='messageHour' placeholder='Type here...' onChange={e => setReservationInfo({...reservationInfo, hour: e.target.value})} />
+                    <label htmlFor="messageServices">SERVICE:</label>
+                    <select id="messageServices" name="messageServices" onChange={e => setReservationInfo({...reservationInfo, service: e.target.value})} >
+                        <option value="empty">SELECT SERVICE</option>
+                        <option value="aroma-therapy">AROMA THERAPY</option>
+                        <option value="hair-styling">HAIR STYLING</option>
+                        <option value="manicure">MANICURE</option>
+                        <option value="massage">MASSAGE</option>
+                        <option value="hair-removal">HAIR REMOVAL</option>
+                        <option value="eyelash-extensions">EYELASH EXTENSIONS</option>
+                    </select>
+                    <button type='submit' className="btn">SCHEDULE NOW</button>
+                    <div className="note-container">
+                        <div className="black-outline">
+                            <h3 className="title">!NOTE</h3>
+                            <p className="paragraph-size">You have to be registered in order to schedule an appointment! If you haven`t registered already click <Link to="/register" className="account-link">HERE</Link>. If you have an account <Link to="/login" className="account-link">LOG IN</Link>.</p>
+                        </div>
+                    </div>
+                </form>
+            }
         </section>
 
         <Footer />

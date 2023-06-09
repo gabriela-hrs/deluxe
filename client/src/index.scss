@@ -2,7 +2,7 @@
 font-family: 'Montserrat', sans-serif;
 font-family: 'Newsreader', serif; */
 
-// GLOBAL STYLES
+// Global Styles start
 
 * {
   padding: 0;
@@ -53,7 +53,15 @@ html {
   font-size: 1.2rem;
 }
 
-// END OF GLOBAL STYLES
+.account-link {
+  text-decoration: none;
+  font-weight: bold;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+// End Of Global Styles
 
 // Login and Register start
 .account-form-container {
@@ -97,14 +105,6 @@ html {
       margin-top: 2rem;
     }
 
-    .account-link {
-      text-decoration: none;
-      font-weight: bold;
-
-      :hover {
-        text-decoration: underline;
-      }
-    }
 
     label, input {
       color: #8F7352;
@@ -163,7 +163,7 @@ html {
       }
   }
 
-  /* STYLING THE CONTAINER */
+  /* Styling Container */
 
   .navbar-container {
       display: flex;
@@ -190,7 +190,7 @@ html {
             cursor: pointer;
             transition: all 1s;
 
-            :hover {
+            &:hover {
               transform: scale(0.8);
             }
           }
@@ -213,11 +213,11 @@ html {
           color: #8F7352;
           padding: 1rem 2rem;
           text-decoration: none;
-        }
 
-        :hover {
-          background-color: #8F7352;
-          color: black;
+          &:hover {
+            background-color: #8F7352;
+            color: black;
+          }
         }
       }
     }
@@ -348,7 +348,6 @@ html {
 
       .service-description {
         width: 65%;
-        font-size: 1.2rem;
         font-family: 'Jacques Francois', serif;
       }
     }
@@ -402,7 +401,6 @@ html {
     width: 85%;
     margin: 4rem auto 0 auto;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 4rem;
@@ -480,7 +478,7 @@ html {
 
 .form-title-line {
   height: 0.3rem;
-  width: 30%;
+  width: 20%;
   background-color: black;
 }
 .account-form label {
@@ -492,10 +490,69 @@ html {
   opacity: 1;
 }
 
+.blur {
+  position: relative;
+  pointer-events: none;
+
+  > * {
+    filter: blur(0.15rem);
+    pointer-events: none;
+  }
+
+  .note-container {
+    pointer-events: all;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    width: 75%;
+    height: fit-content;
+    filter: blur(0);
+    background-color: #8F7352;
+    box-shadow: 0.4rem 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    padding: 1rem;
+    border-radius: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+    .black-outline {
+      border: 0.3rem solid black;
+      margin: auto;
+      width: 100%;
+      height: 10rem;
+      filter: blur(0);
+      background-color: #8F7352;
+      padding: 10rem 1rem;
+      border-radius: 2rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    p {
+      padding: 0 10%;
+      text-align: center;
+    }
+    .account-link {
+      color: black;
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+}
+
 //Contacts end
 
 //Footer start
-.footer {
+.desktop-footer, .mobile-footer {
   background-color: #8F7352;
   padding: 8rem 0;
 
@@ -545,4 +602,319 @@ html {
     }
   }
 }
+
+.mobile-footer {
+  display: none;
+}
 //Footer end
+
+// MEDIA QUERIES
+
+@media only screen and (max-width: 1000px) {
+
+  // GLOBAL STYLES
+
+  .btn {
+    width: 12rem;
+    height: 3rem;
+    font-size: 0.9rem;
+  }
+
+  .scroll-btn {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .title {
+    font-size: 1.8rem;
+  }
+
+  .title-line {
+    height: 0.2rem;
+  }
+
+  .paragraph-size {
+    font-size: 0.9rem;
+  }
+
+  // END OF GLOBAL STYLES
+
+  // STYLING THE NAVBAR
+
+  .navbar {
+    .navbar-top {
+      .salon-name {
+        font-size: 3.6rem;
+      }
+    }
+
+    .navbar-container {
+      .nav-row {
+        .profile-btn {
+          width: 1.8rem;
+          height: 1.8rem;
+        }
+      }
+      .nav-menu {
+        .nav-item {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+
+  // END OF STYLING THE NAVBAR
+
+  //HOME PAGE
+
+  .hero-section {
+    .container {
+      .hero-btn {
+        width: 9rem;
+        height: 9rem;
+      }
+    }
+  }
+
+  // END OF HOME PAGE
+
+  // STYLING THE CONTACTS PAGE
+
+  .contacts-page {
+    h4 {
+      font-size: 1.2rem;
+    }
+
+    p {
+      text-indent: 1.5rem;
+    }
+
+    > * {
+      font-size: 0.9rem;
+    }
+  }
+
+  .form-title-line {
+    height: 0.2rem;
+    width: 15%;
+    background-color: black;
+  }
+
+  .reservations-form {
+
+    label, input, select {
+      font-size: 0.9rem;
+    }
+
+    label {
+      margin-bottom: 1.5rem;
+    }
+
+    input, select {
+      padding: 0.5rem;
+      margin-bottom: 3rem;
+    }
+  }
+
+  .account-form label {
+    margin-bottom: 1.5rem;
+  }
+
+  // END OF STYLING THE CONTACTS PAGE
+
+  .desktop-footer, .mobile-footer {
+    .footer-container {
+      .footer-about {
+        .footer-salon-name {
+          font-size: 2.4rem;
+          margin-bottom: 3rem;
+        }
+      }
+
+      .footer-nav, .footer-services, .footer-contacts {
+        .footer-title {
+          font-size: 0.9rem;
+        }
+
+        .footer-link {
+          font-size: 0.9rem;
+        }
+
+        .footer-p, .footer-services a {
+          font-size: 0.9rem;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 750px) {
+  // GLOBAL STYLES
+
+  .btn {
+    width: 9rem;
+    height: 2rem;
+    font-size: 0.6rem;
+  }
+
+  .scroll-btn {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+  }
+
+  .paragraph-size {
+    font-size: 0.9rem;
+  }
+
+  // END OF GLOBAL STYLES
+
+  // STYLING THE NAVBAR
+
+  .navbar {
+    .navbar-top {
+      .salon-name {
+        font-size: 2.4rem;
+      }
+    }
+
+    .navbar-container {
+      .nav-row {
+        .profile-btn {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
+      .nav-menu {
+        .nav-item {
+          font-size: 0.6rem;
+        }
+      }
+    }
+  }
+
+  // END OF STYLING THE NAVBAR
+
+  //HOME PAGE
+
+  .hero-section {
+    .container {
+      .hero-btn {
+        width: 7rem;
+        height: 7rem;
+      }
+    }
+  }
+
+  .services-section {
+    .service {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+
+      .service-img {
+        width: 100%;
+
+        img {
+          width: 100%;
+        }
+      }
+
+      .service-info {
+        width: 100%;
+        height: 24rem;
+
+      }
+    }
+
+    .column-reverse {
+      display: flex;
+      flex-direction: column-reverse;
+    }
+  }
+
+  // END OF HOME PAGE
+
+  // STYLING THE CONTACTS PAGE
+
+  .contacts-page {
+    .contacts-page-container {
+      flex-direction: column-reverse;
+
+      .location-map-container {
+        width: 24rem;
+        height: 24rem;
+      }
+
+      .contacts-page-info {
+        width: 24rem;
+      }
+    }
+  }
+
+  .form-title-line {
+    height: 0.2rem;
+    width: 10%;
+    background-color: black;
+  }
+
+  .reservations-form {
+    .note-container {
+      .black-outline {
+        border: 0.15rem solid black;
+        margin: auto;
+        width: 100%;
+        padding: 8rem 1rem;
+        border-radius: 2rem;
+        gap: 2rem;
+      }
+    }
+  }
+
+  // END OF STYLING THE CONTACTS PAGE
+
+  // STYLING THE FOOTER
+
+  .desktop-footer {
+    display: none;
+  }
+
+  .mobile-footer {
+    display: block;
+
+    .footer-container {
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      gap: 4rem;
+
+      .footer-about {
+        width: 100%;
+      }
+
+      .footer-nav, .footer-services, .footer-contacts {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .footer-link {
+          font-size: 0.9rem;
+        }
+
+        .footer-p, .footer-services a {
+          font-size: 0.9rem;
+        }
+      }
+
+      .mobile-nav {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  // END OF STYLING THE FOOTER
+}
